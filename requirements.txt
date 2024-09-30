@@ -1,4 +1,8 @@
-numpy
-cvxpy
-cvxportfolio
-pandas
+DateTime==5.5
+numpy==2.1.1
+pandas==2.2.3
+platformdirs==4.3.6
+python-dateutil==2.9.0.post0
+typing==3.7.4.3
+yfinance==0.2.43
+pytest==8.3.3

@@ -1,4 +1,4 @@
-mport numpy as np
+import numpy as np
 import cvxpy as cp
 
 def single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold):

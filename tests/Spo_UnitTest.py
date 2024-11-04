@@ -13,16 +13,35 @@ from single_period_optimization import single_period_optimization
 
 # Fixture to create a sample portfolio with some trades
 @pytest.fixture
-def sample_portfolio():
-        portfolio = Portfolio()
-        trades = [
-            Trade("AAPL", 100, 150.0, datetime(2023, 1, 1), TradeType.BUY),
-            Trade("GOOGL", 50, 2000.0, datetime(2023, 1, 2), TradeType.BUY),
-            Trade("MSFT", 75, 300.0, datetime(2023, 1, 3), TradeType.BUY)
-        ]
-        for trade in trades:
-            portfolio.execute_trade(trade)
-        return portfolio
+def sample_portfolio1():
+    #declare and initialize portfolio
+    portfolio = Portfolio() #basic portfolio
+
+    #trades vector to trade on
+    trades = [
+        Trade("AAPL", 100, 150.0, datetime(2023, 1, 1), TradeType.BUY),
+        Trade("GOOGL", 50, 2000.0, datetime(2023, 1, 2), TradeType.BUY),
+        Trade("MSFT", 75, 300.0, datetime(2023, 1, 3), TradeType.BUY)
+    ]
+    for trade in trades:
+        portfolio.execute_trade(trade)
+    return portfolio
+
+@pytest.fixture
+def sample_portfolio2():
+    #declare and initialize portfolio
+    portfolio = Portfolio() #basic portfolio
+
+    #trades vector to trade on
+    trades = [
+        Trade("AAPL", 100, 150.0, datetime(2023, 1, 1), TradeType.BUY),
+        Trade("GOOGL", 50, 2000.0, datetime(2023, 1, 2), TradeType.BUY),
+        Trade("MSFT", 75, 300.0, datetime(2023, 1, 3), TradeType.BUY)
+    ]
+    for trade in trades:
+        portfolio.execute_trade(trade)
+    return portfolio
+
 
 
 def high_gamma(self, portfolio):

@@ -36,12 +36,35 @@ def sample_portfolio2():
     trades = [
         Trade("AAPL", 100, 150.0, datetime(2023, 1, 1), TradeType.BUY),
         Trade("GOOGL", 50, 2000.0, datetime(2023, 1, 2), TradeType.BUY),
-        Trade("MSFT", 75, 300.0, datetime(2023, 1, 3), TradeType.BUY)
+        Trade("MSFT", 75, 300.0, datetime(2023, 1, 3), TradeType.BUY),
+        Trade("AAPL", 100, 150.0, datetime(2023, 1, 1), TradeType.SELL),
+        Trade("GOOGL", 50, 2000.0, datetime(2023, 1, 2), TradeType.SELL),
     ]
     for trade in trades:
         portfolio.execute_trade(trade)
     return portfolio
 
+@pytest.fixture
+def sample_portfolio3():
+    #declare and initialize portfolio
+    portfolio = Portfolio() #basic portfolio
+
+    #trades vector to trade on
+    trades = [
+        Trade('AAPL', 10, 150.0, datetime.now(), TradeType.BUY),
+        Trade('GOOGL', 5, 2500.0, datetime.now() - timedelta(days=1), TradeType.BUY),
+        Trade('MSFT', 8, 300.0, datetime.now() - timedelta(days=2), TradeType.SELL),
+        Trade('TSLA', 15, 800.0, datetime.now() - timedelta(days=3), TradeType.BUY),
+        Trade('AMZN', 3, 3500.0, datetime.now() - timedelta(days=4), TradeType.SELL),
+        Trade('NFLX', 20, 500.0, datetime.now() - timedelta(days=5), TradeType.BUY),
+        Trade('AAPL', 5, 155.0, datetime.now() - timedelta(days=6), TradeType.SELL),
+        Trade('FB', 7, 320.0, datetime.now() - timedelta(days=7), TradeType.BUY),
+        Trade('GOOGL', 2, 2550.0, datetime.now() - timedelta(days=8), TradeType.SELL),
+        Trade('TSLA', 10, 850.0, datetime.now() - timedelta(days=9), TradeType.BUY)
+    ]
+    for trade in trades:
+        portfolio.execute_trade(trade)
+    return portfolio
 
 
 def high_gamma(self, portfolio):
@@ -76,6 +99,7 @@ def med_gamma(self):
 
     spo = single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold)
     self.assertEqual(Portfolio.single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold), spo)
+
 
 
 # Run the tests

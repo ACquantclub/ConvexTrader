@@ -25,20 +25,38 @@ def sample_portfolio():
         return portfolio
 
 
-def high_gamma(self):
+def high_gamma(self, portfolio):
 
-    spo = single_period_optimization(r_t, w_t, 5.0, phi_trade, phi_hold)
-    self.assertEqual(Portfolio.single_period_optimization(r_t, w_t, 5.0, phi_trade, phi_hold), spo)
+    r_t = np.array([0.05, 0.07, 0.02])
+    w_t = portfolio.get_weights()
+    gamma = 4.0
+    phi_hold = portfolio.phi_hold()
+    phi_trade = portfolio.phi_trade()
+
+    spo = single_period_optimization(r_t, w_t, gamme, phi_trade, phi_hold)
+    self.assertEqual(Portfolio.single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold), spo)
 
 def low_gamma(self):
 
-    spo = single_period_optimization(r_t, w_t, 0.1, phi_trade, phi_hold)
-    self.assertEqual(Portfolio.single_period_optimization(r_t, w_t, 0.1, phi_trade, phi_hold), spo)
+    r_t = np.array([0.05, 0.07, 0.02])
+    w_t = portfolio.get_weights()
+    gamma = 0.1
+    phi_hold = portfolio.phi_hold()
+    phi_trade = portfolio.phi_trade()
+
+    spo = single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold)
+    self.assertEqual(Portfolio.single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold), spo)
     
 def med_gamma(self):
 
-    spo = single_period_optimization(r_t, w_t, 1.0, phi_trade, phi_hold)
-    self.assertEqual(Portfolio.single_period_optimization(r_t, w_t, 1.0, phi_trade, phi_hold), spo)
+    r_t = np.array([0.05, 0.07, 0.02])
+    w_t = portfolio.get_weights()
+    gamma = 1.5
+    phi_hold = portfolio.phi_hold()
+    phi_trade = portfolio.phi_trade()
+
+    spo = single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold)
+    self.assertEqual(Portfolio.single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold), spo)
 
 
 # Run the tests

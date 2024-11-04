@@ -1,0 +1,2 @@
+- change in gamma
+- create and test multiple portfolios

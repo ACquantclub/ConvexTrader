@@ -1,4 +1,5 @@
 import numpy as np
+import cvxpy as cp
 from typing import List, Dict
 from Trade import Trade, TradeType
 from single_period_optimization import single_period_optimization
@@ -87,17 +88,31 @@ class Portfolio:
         # Return the dot product of the holdings vector and prices vector to get the portfolio's total value
         return np.dot(self.holdings_vector, prices_vector)
     
-    # Define the cost functions
-    def phi_trade(x):
-        return cp.sum(cp.abs(z))  # Example transaction cost function
+    def calculate_spo(self, expected_returns: np.ndarray, gamma: float) -> np.ndarray:
+        """
+        Solve the single-period optimization problem using the provided single_period_optimization function.
+        
+        Args:
+            expected_returns: Numpy array of expected returns for each stock in the portfolio.
+            gamma: Risk-aversion parameter.
+        
+        Returns:
+            Numpy array: Optimal trade vector (z).
+        """
+        w_t = self.weights_vector
 
-    def phi_hold(x):
-        return cp.sum(w ** 2)  # Example holding cost function
+        def phi_trade(z):
+            return cp.sum(cp.abs(z))  # Transaction cost
 
+        def phi_hold(w):
+            return cp.sum(cp.square(w))  # Holding cost
 
-    def calculate_spo(Self):
+        # Validate inputs
+        if len(expected_returns) != len(self.weights_vector):
+            raise ValueError("Expected returns length must match portfolio size")
+        if gamma < 0:
+            raise ValueError("gamma must be non-negative")
 
-        r_t = np.array([0.05, 0.07, 0.02]) #replace with actual data, temp data to test function
-        w_t = self.holdings #holdings array of portfolio
-        gamma = 0.5 #replace with actual data 
-        return single_period_optimization(r_t, w_t, gamme, phi_trade, phi_hold)
+        optimal_trades = single_period_optimization(expected_returns, w_t, gamma, phi_trade, phi_hold)
+
+        return optimal_trades

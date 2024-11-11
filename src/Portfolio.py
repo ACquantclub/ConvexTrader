@@ -1,6 +1,7 @@
 import numpy as np
 from typing import List, Dict
 from Trade import Trade, TradeType
+from single_period_optimization import single_period_optimization
 
 class Portfolio:
     def __init__(self):
@@ -85,3 +86,18 @@ class Portfolio:
         prices_vector = np.array([current_prices[symbol] for symbol in self.symbols])
         # Return the dot product of the holdings vector and prices vector to get the portfolio's total value
         return np.dot(self.holdings_vector, prices_vector)
+    
+    # Define the cost functions
+    def phi_trade(x):
+        return cp.sum(cp.abs(z))  # Example transaction cost function
+
+    def phi_hold(x):
+        return cp.sum(w ** 2)  # Example holding cost function
+
+
+    def calculate_spo(Self):
+
+        r_t = np.array([0.05, 0.07, 0.02]) #replace with actual data, temp data to test function
+        w_t = self.holdings #holdings array of portfolio
+        gamma = 0.5 #replace with actual data 
+        return single_period_optimization(r_t, w_t, gamme, phi_trade, phi_hold)

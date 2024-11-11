@@ -1,0 +1,6 @@
+- change in gamma
+- create and test multiple portfolios
+
+after pull
+- delete branch
+- create new branch

@@ -30,7 +30,7 @@ def optimize(H, r_t, portfolio, gamma_t, psi_t, phi_trade, phi_hold):
         # psi_t[i] is the risk factor of each stock for period tau
         # phi_trade[i] is the transaction cost of each stock for period tau
         # phi_hold[i] is the holding cost of each stock for period tau
-        objective_vals[i-1] = np.dot(r_t[i], cur_w) - gamma_t[i] * np.dot(psi_t[i], cur_w) - np.dot(phi_hold[i], cur_w) - np.dot(phi_trade[i], cur_w - prev_w)
+        objective_vals[i-1] = np.dot(r_t[i], cur_w) - gamma_t[i] * psi_t[i] * cur_w - np.dot(phi_hold[i], cur_w) - np.dot(phi_trade[i], cur_w - prev_w)
 
         # Self financing constraint
         constraints[i-1] = cp.sum(cur_w) == 1

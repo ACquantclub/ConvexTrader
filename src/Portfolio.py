@@ -4,7 +4,7 @@ from Trade import Trade, TradeType
 from single_period_optimization import single_period_optimization
 
 class Portfolio:
-    def __init__(self):
+    def __init__(self, gamma=0.5):
         """
         Initialize a portfolio with empty holdings, trades, symbols, and vectors for holdings and weights.
         - holdings: Dictionary to store the quantity of each stock symbol.
@@ -12,12 +12,14 @@ class Portfolio:
         - symbols: List to keep track of all unique stock symbols in the portfolio.
         - holdings_vector: Numpy array representing quantities of each stock in the same order as symbols.
         - weights_vector: Numpy array representing the proportion of each stock in the portfolio.
+        - gamma: double representing the risk metric gamma, set to 0.5 automatically but can be customized by the user
         """
         self.holdings: Dict[str, int] = {}
         self.trades: List[Trade] = []
         self.symbols: List[str] = []
         self.holdings_vector: np.ndarray = np.array([])
         self.weights_vector: np.ndarray = np.array([])
+        self.gamma = gamma
 
     def execute_trade(self, trade: Trade):
         """
@@ -100,4 +102,5 @@ class Portfolio:
         r_t = np.array([0.05, 0.07, 0.02]) #replace with actual data, temp data to test function
         w_t = self.holdings #holdings array of portfolio
         gamma = 0.5 #replace with actual data 
-        return single_period_optimization(r_t, w_t, gamme, phi_trade, phi_hold)
+        return single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold)
+    

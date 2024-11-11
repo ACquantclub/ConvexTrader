@@ -66,9 +66,7 @@ def sample_portfolio3():
         portfolio.execute_trade(trade)
     return portfolio
 
-
 def high_gamma(self, portfolio):
-
     r_t = np.array([0.05, 0.07, 0.02])
     w_t = portfolio.get_weights()
     gamma = 4.0
@@ -79,7 +77,6 @@ def high_gamma(self, portfolio):
     self.assertEqual(Portfolio.single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold), spo)
 
 def low_gamma(self):
-
     r_t = np.array([0.05, 0.07, 0.02])
     w_t = portfolio.get_weights()
     gamma = 0.1
@@ -90,7 +87,6 @@ def low_gamma(self):
     self.assertEqual(Portfolio.single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold), spo)
     
 def med_gamma(self):
-
     r_t = np.array([0.05, 0.07, 0.02])
     w_t = portfolio.get_weights()
     gamma = 1.5
@@ -100,10 +96,6 @@ def med_gamma(self):
     spo = single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold)
     self.assertEqual(Portfolio.single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold), spo)
 
-
-
 # Run the tests
 if __name__ == "__main__":
     pytest.main()
-
-    

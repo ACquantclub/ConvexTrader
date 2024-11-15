@@ -3,6 +3,7 @@ import cvxpy as cp
 from typing import List, Dict
 from Trade import Trade, TradeType
 from single_period_optimization import single_period_optimization
+from multi_period_optimization import multi_period_optimization
 
 class Portfolio:
     def __init__(self, gamma=0.5):
@@ -90,7 +91,7 @@ class Portfolio:
         # Return the dot product of the holdings vector and prices vector to get the portfolio's total value
         return np.dot(self.holdings_vector, prices_vector)
     
-    def calculate_spo(self, expected_returns: np.ndarray, gamma: float) -> np.ndarray:
+    def single_period_optimize(self, expected_returns: np.ndarray, gamma: float) -> np.ndarray:
         """
         Solve the single-period optimization problem using the provided single_period_optimization function.
         
@@ -116,4 +117,28 @@ class Portfolio:
             raise ValueError("gamma must be non-negative")
 
         optimal_trades = single_period_optimization(expected_returns, w_t, gamma, phi_trade, phi_hold)
+        
         return optimal_trades
+
+    def multi_period_optimize(self, H: int, r_t: np.ndarray, gamma_t: np.ndarray, psi_t: np.ndarray,
+                              phi_trade: List[np.ndarray], phi_hold: List[np.ndarray]) -> np.ndarray:
+        """
+        Solve the multi-period optimization problem using the multi_period_optimization function.
+        
+        Args:
+            H: Number of future periods to optimize.
+            r_t: Matrix of expected returns, where each row corresponds to a future period.
+            gamma_t: Vector of risk-aversion parameters for each period.
+            psi_t: Vector of risk factors for each period.
+            phi_trade: List of transaction cost vectors for each period.
+            phi_hold: List of holding cost vectors for each period.
+        
+        Returns:
+            Numpy array: Optimal trade vectors over all periods (z matrix).
+        """
+        if r_t.shape[1] != len(self.weights_vector):
+            raise ValueError("Number of assets in expected returns must match portfolio size")
+        if len(gamma_t) != H or len(psi_t) != H or len(phi_trade) != H or len(phi_hold) != H:
+            raise ValueError("All inputs for each period must have length H")
+        
+        return multi_period_optimization(H, r_t, self, gamma_t, psi_t, phi_trade, phi_hold)

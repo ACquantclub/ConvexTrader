@@ -6,7 +6,7 @@ from single_period_optimization import single_period_optimization
 from multi_period_optimization import multi_period_optimization
 
 class Portfolio:
-    def __init__(self):
+    def __init__(self, gamma=0.5):
         """
         Initialize a portfolio with empty holdings, trades, symbols, and vectors for holdings and weights.
         - holdings: Dictionary to store the quantity of each stock symbol.
@@ -14,12 +14,14 @@ class Portfolio:
         - symbols: List to keep track of all unique stock symbols in the portfolio.
         - holdings_vector: Numpy array representing quantities of each stock in the same order as symbols.
         - weights_vector: Numpy array representing the proportion of each stock in the portfolio.
+        - gamma: double representing the risk metric gamma, set to 0.5 automatically but can be customized by the user
         """
         self.holdings: Dict[str, int] = {}
         self.trades: List[Trade] = []
         self.symbols: List[str] = []
         self.holdings_vector: np.ndarray = np.array([])
         self.weights_vector: np.ndarray = np.array([])
+        self.gamma = gamma
 
     def execute_trade(self, trade: Trade):
         """
@@ -115,7 +117,7 @@ class Portfolio:
             raise ValueError("gamma must be non-negative")
 
         optimal_trades = single_period_optimization(expected_returns, w_t, gamma, phi_trade, phi_hold)
-
+        
         return optimal_trades
 
     def multi_period_optimize(self, H: int, r_t: np.ndarray, gamma_t: np.ndarray, psi_t: np.ndarray,

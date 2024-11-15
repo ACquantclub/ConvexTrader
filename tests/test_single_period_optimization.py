@@ -115,7 +115,7 @@ def test_calculate_spo_unbalanced_weights(sample_portfolio3):
     expected_returns = np.array([0.05, 0.07, 0.02, 0.03, 0.04, 0.06, 0.01])  # Example expected returns
     gamma = 1.0  # Neutral risk aversion
 
-    optimal_trades = portfolio.calculate_spo(expected_returns, gamma)
+    optimal_trades = portfolio.single_period_optimize(expected_returns, gamma)
 
     # Assert the optimization returned results
     assert optimal_trades is not None, "Optimization failed for unbalanced portfolio"
@@ -128,7 +128,7 @@ def test_calculate_spo_low_gamma(sample_portfolio1):
     expected_returns = np.array([0.05, 0.07, 0.02])
     gamma = 0.1
     
-    optimal_trades = portfolio.calculate_spo(expected_returns, gamma)
+    optimal_trades = portfolio.single_period_optimize(expected_returns, gamma)
     
     # Lower threshold for trade size
     assert np.any(np.abs(optimal_trades) > 0.1), "Low gamma should allow moderate trades"
@@ -140,7 +140,7 @@ def test_calculate_spo_zero_expected_returns(sample_portfolio2):
     expected_returns = np.zeros(len(portfolio.symbols))
     gamma = 1.0
     
-    optimal_trades = portfolio.calculate_spo(expected_returns, gamma)
+    optimal_trades = portfolio.single_period_optimize(expected_returns, gamma)
     
     # Use larger tolerance
     assert np.allclose(optimal_trades, 0, atol=1e-3), "Zero expected returns should lead to minimal trades"
@@ -154,7 +154,7 @@ def test_calculate_spo_unbalanced_weights(sample_portfolio3):
     expected_returns = np.array([0.05, 0.07, 0.02, 0.03, 0.04, 0.06, 0.01])
     gamma = 1.0
     
-    optimal_trades = portfolio.calculate_spo(expected_returns, gamma)
+    optimal_trades = portfolio.single_period_optimize(expected_returns, gamma)
     
     # Test for rebalancing direction rather than specific values
     high_weight_asset = np.argmax(portfolio.weights_vector)

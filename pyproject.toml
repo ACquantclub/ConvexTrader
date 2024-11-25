@@ -26,5 +26,7 @@ exclude = '''
     | venv
     | ConvexTrader/portfolio_exceptions.py
     | tests/conftest\.py
+    | data/scrape.py
+    | docs/source/conf.py
 )/
 '''

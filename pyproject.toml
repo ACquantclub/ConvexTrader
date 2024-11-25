@@ -1,0 +1,31 @@
+[tool.pre-commit]
+config = ".pre-commit-config.yaml"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+exclude = '''
+/(
+    \.direnv
+    | \.eggs
+    | \.git
+    | \.hg
+    | \.ipynb_checkpoints
+    | \.mypy_cache
+    | \.nox
+    | \.pytest_cache
+    | \.ruff_cache
+    | \.tox
+    | \.env
+    | \.svn
+    | __pypackages__
+    | _build
+    | buck-out
+    | build
+    | dist
+    | venv
+    | docs/source/conf\.py
+    | data/scrape\.py
+    | tests/conftest\.py
+)/
+'''

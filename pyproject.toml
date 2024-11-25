@@ -3,7 +3,7 @@ config = ".pre-commit-config.yaml"
 
 [tool.black]
 line-length = 88
-target-version = ["py311"]
+target-version = ["py312"]
 exclude = '''
 /(
     \.direnv
@@ -24,9 +24,8 @@ exclude = '''
     | build
     | dist
     | venv
-    | ConvexTrader/portfolio_exceptions.py
-    | tests/conftest\.py
     | docs/source/conf\.py
     | data/scrape\.py
+    | tests/conftest\.py
 )/
 '''

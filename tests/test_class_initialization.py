@@ -1,9 +1,9 @@
 import pytest
 import numpy as np
 from datetime import datetime
-from Portfolio import Portfolio
-from Trade import Trade, TradeType
-from portfolio_exceptions import ValidationError, OptimizationError
+from ConvexTrader.Portfolio import Portfolio
+from ConvexTrader.Trade import Trade, TradeType
+from ConvexTrader.portfolio_exceptions import ValidationError, OptimizationError
 
 
 @pytest.fixture

@@ -2,10 +2,10 @@ import pytest
 import numpy as np
 import cvxpy as cp
 from datetime import datetime
-from Portfolio import Portfolio
-from Trade import Trade, TradeType
-from single_period_optimization import single_period_optimization
-from portfolio_exceptions import ValidationError, OptimizationError
+from ConvexTrader.Portfolio import Portfolio
+from ConvexTrader.Trade import Trade, TradeType
+from ConvexTrader.single_period_optimization import single_period_optimization
+from ConvexTrader.portfolio_exceptions import ValidationError, OptimizationError
 
 
 @pytest.fixture

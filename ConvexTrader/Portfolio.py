@@ -1,10 +1,10 @@
 import numpy as np
 import cvxpy as cp
 from typing import List, Dict
-from Trade import Trade, TradeType
-from single_period_optimization import single_period_optimization
-from multi_period_optimization import multi_period_optimization
-from portfolio_exceptions import ValidationError, OptimizationError
+from .Trade import Trade, TradeType
+from .single_period_optimization import single_period_optimization
+from .multi_period_optimization import multi_period_optimization
+from .portfolio_exceptions import ValidationError, OptimizationError
 
 
 class Portfolio:

@@ -1,6 +1,6 @@
 import numpy as np
 import cvxpy as cp
-from portfolio_exceptions import ValidationError, OptimizationError
+from .portfolio_exceptions import ValidationError, OptimizationError
 
 
 def validate_inputs(H, r_t, portfolio, gamma_t, psi_t, phi_trade, phi_hold):

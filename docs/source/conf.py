@@ -1,4 +1,7 @@
-import sphinx_bernard_theme
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath("../../"))
 
 # Configuration file for the Sphinx documentation builder.
 #
@@ -16,13 +19,14 @@ release = "0.0.0"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = ["sphinx.ext.autodoc", "sphinx.ext.napoleon", "sphinx.ext.viewcode"]
+
 
 templates_path = ["_templates"]
+html_static_path = []
 exclude_patterns = []
 
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-html_theme = "alabaster"
-html_static_path = ["_static"]
+html_theme = "furo"

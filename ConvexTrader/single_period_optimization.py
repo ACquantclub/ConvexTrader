@@ -1,6 +1,6 @@
 import numpy as np
 import cvxpy as cp
-from portfolio_exceptions import ValidationError, OptimizationError
+from .portfolio_exceptions import ValidationError, OptimizationError
 
 
 def validate_inputs(r_t, w_t, gamma):

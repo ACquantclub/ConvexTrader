@@ -25,11 +25,11 @@ jobs:
       # Checkout the GitHub repo
       - uses: actions/checkout@v2
 
-      # Install Python 3.11.10
-      - name: Set up Python 3.11.10
+      # Install Python 3.11
+      - name: Set up Python 3.11
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11.10"
+          python-version: "3.11"
 
       # Pip install project dependencies
       - name: Install dependencies

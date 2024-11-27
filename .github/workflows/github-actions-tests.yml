@@ -40,4 +40,4 @@ jobs:
       # Move into the project tests folder (./tests) and run pytest
       - name: Framework Unit Tests with pytest
         working-directory: ./
-        run: pytest --cov --cov-config=.coveragerc --cov-fail-under=90
+        run: pytest tests/ --cov --cov-config=.coveragerc --cov-fail-under=90

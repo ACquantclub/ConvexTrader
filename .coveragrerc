@@ -1,6 +1,6 @@
 [run]
 # Define the source directory for measuring coverage
-source = src
+source = ConvexTrader
 
 # Omit specific files from coverage reporting
 omit =

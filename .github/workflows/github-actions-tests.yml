@@ -30,6 +30,10 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
+      
+      # Set PYTHONPATH to the src folder
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PWD/src" >> $GITHUB_ENV
 
       # Pip install project dependencies
       - name: Install dependencies

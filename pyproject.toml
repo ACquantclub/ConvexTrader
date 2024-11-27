@@ -1,3 +1,30 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ConvexTrader"
+version = "0.0.0"
+description = "A package for portfolio optimization using convex optimization"
+readme = "README.md"
+requires-python = ">=3.7"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Your Name", email = "ljdavis27@amherst.edu" }
+]
+keywords = ["portfolio optimization", "convex optimization", "finance"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dependencies = []
+
+[project.urls]
+Homepage = "https://acquantclub.github.io/Applications-of-Convex-Optimization"
+Repository = "https://github.com/ACquantclub/Applications-of-Convex-Optimization"
+
 [tool.pre-commit]
 config = ".pre-commit-config.yaml"
 

@@ -15,7 +15,7 @@ def parse_requirements(filename):
 
 setup(
     name="ConvexTrader",
-    version="0.0.0",
+    version="0.0.1",
     author="Liam Davis",
     author_email="ljdavis27@amherst.edu",
     description="A package for portfolio optimization using convex optimization",

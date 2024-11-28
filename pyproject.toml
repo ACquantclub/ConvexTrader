@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ConvexTrader"
-version = "0.0.1"
+version = "0.0.2"
 description = "A package for portfolio optimization using convex optimization"
 readme = "README.md"
 requires-python = ">=3.7"
 license = { file = "LICENSE" }
 authors = [
-    { name = "Your Name", email = "ljdavis27@amherst.edu" }
+    { name = "Liam Davis", email = "ljdavis27@amherst.edu" }
 ]
 keywords = ["portfolio optimization", "convex optimization", "finance"]
 classifiers = [

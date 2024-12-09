@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -238,7 +238,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -246,6 +246,103 @@
         <article role="main" id="furo-main-content">
           <section id="portfolio">
 <h1>Portfolio<a class="headerlink" href="#portfolio" title="Link to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="ConvexTrader.Portfolio">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">ConvexTrader.</span></span><span class="sig-name descname"><span class="pre">Portfolio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ConvexTrader/Portfolio.html#Portfolio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ConvexTrader.Portfolio" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="ConvexTrader.Portfolio.execute_trade">
+<span class="sig-name descname"><span class="pre">execute_trade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trade</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="Trade.html#ConvexTrader.Trade" title="ConvexTrader.Trade.Trade"><span class="pre">Trade</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ConvexTrader/Portfolio.html#Portfolio.execute_trade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ConvexTrader.Portfolio.execute_trade" title="Link to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Executes a trade (buy or sell) by updating holdings and adjusting portfolio weights accordingly.</dt><dd><p>trade: A Trade object containing trade details (symbol, quantity, trade_type).</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>trade</strong> – A Trade object containing trade details (symbol, quantity, trade_type)</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValidationError</strong> – If there are insufficient shares for a sell trade</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ConvexTrader.Portfolio.get_weights">
+<span class="sig-name descname"><span class="pre">get_weights</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/ConvexTrader/Portfolio.html#Portfolio.get_weights"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ConvexTrader.Portfolio.get_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of stock symbols and their corresponding weights in the portfolio.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ConvexTrader.Portfolio.multi_period_optimize">
+<span class="sig-name descname"><span class="pre">multi_period_optimize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psi_t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi_trade</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi_hold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/ConvexTrader/Portfolio.html#Portfolio.multi_period_optimize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ConvexTrader.Portfolio.multi_period_optimize" title="Link to this definition">¶</a></dt>
+<dd><p>Solve the multi-period optimization problem using the multi_period_optimization function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>H</strong> – Number of future periods to optimize.</p></li>
+<li><p><strong>r_t</strong> – Matrix of expected returns, where each row corresponds to a future period.</p></li>
+<li><p><strong>gamma_t</strong> – Vector of risk-aversion parameters for each period.</p></li>
+<li><p><strong>psi_t</strong> – Vector of risk factors for each period.</p></li>
+<li><p><strong>phi_trade</strong> – List of transaction cost vectors for each period.</p></li>
+<li><p><strong>phi_hold</strong> – List of holding cost vectors for each period.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optimal trade vectors over all periods (z matrix).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Numpy array</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValidationError</strong> – If input parameters are invalid</p></li>
+<li><p><strong>OptimizationError</strong> – If optimization fails</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ConvexTrader.Portfolio.single_period_optimize">
+<span class="sig-name descname"><span class="pre">single_period_optimize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expected_returns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/ConvexTrader/Portfolio.html#Portfolio.single_period_optimize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ConvexTrader.Portfolio.single_period_optimize" title="Link to this definition">¶</a></dt>
+<dd><p>Solve the single-period optimization problem using the provided single_period_optimization function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>expected_returns</strong> – Numpy array of expected returns for each stock in the portfolio.</p></li>
+<li><p><strong>gamma</strong> – Risk-aversion parameter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optimal trade vector (z).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Numpy array</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValidationError</strong> – If input parameters are invalid</p></li>
+<li><p><strong>OptimizationError</strong> – If optimization fails</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ConvexTrader.Portfolio.total_value">
+<span class="sig-name descname"><span class="pre">total_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">current_prices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/ConvexTrader/Portfolio.html#Portfolio.total_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ConvexTrader.Portfolio.total_value" title="Link to this definition">¶</a></dt>
+<dd><p>Calculates the total market value of the portfolio based on current stock prices.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="ConvexTrader.Portfolio.update_weights">
+<span class="sig-name descname"><span class="pre">update_weights</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/ConvexTrader/Portfolio.html#Portfolio.update_weights"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ConvexTrader.Portfolio.update_weights" title="Link to this definition">¶</a></dt>
+<dd><p>Updates the portfolio weights based on the current holdings.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 
         </article>
@@ -291,8 +388,35 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Portfolio</a><ul>
+<li><a class="reference internal" href="#ConvexTrader.Portfolio"><code class="docutils literal notranslate"><span class="pre">Portfolio</span></code></a><ul>
+<li><a class="reference internal" href="#ConvexTrader.Portfolio.execute_trade"><code class="docutils literal notranslate"><span class="pre">Portfolio.execute_trade()</span></code></a></li>
+<li><a class="reference internal" href="#ConvexTrader.Portfolio.get_weights"><code class="docutils literal notranslate"><span class="pre">Portfolio.get_weights()</span></code></a></li>
+<li><a class="reference internal" href="#ConvexTrader.Portfolio.multi_period_optimize"><code class="docutils literal notranslate"><span class="pre">Portfolio.multi_period_optimize()</span></code></a></li>
+<li><a class="reference internal" href="#ConvexTrader.Portfolio.single_period_optimize"><code class="docutils literal notranslate"><span class="pre">Portfolio.single_period_optimize()</span></code></a></li>
+<li><a class="reference internal" href="#ConvexTrader.Portfolio.total_value"><code class="docutils literal notranslate"><span class="pre">Portfolio.total_value()</span></code></a></li>
+<li><a class="reference internal" href="#ConvexTrader.Portfolio.update_weights"><code class="docutils literal notranslate"><span class="pre">Portfolio.update_weights()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

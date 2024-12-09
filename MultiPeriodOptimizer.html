@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -238,14 +238,45 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="multi-period-optimizer">
-<h1>Multi Period Optimizer<a class="headerlink" href="#multi-period-optimizer" title="Link to this heading">¶</a></h1>
+          <section id="module-ConvexTrader.multi_period_optimization">
+<span id="multi-period-optimizer"></span><h1>Multi Period Optimizer<a class="headerlink" href="#module-ConvexTrader.multi_period_optimization" title="Link to this heading">¶</a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="ConvexTrader.multi_period_optimization.multi_period_optimization">
+<span class="sig-prename descclassname"><span class="pre">ConvexTrader.multi_period_optimization.</span></span><span class="sig-name descname"><span class="pre">multi_period_optimization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">H</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portfolio</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">psi_t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi_trade</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi_hold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/ConvexTrader/multi_period_optimization.html#multi_period_optimization"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ConvexTrader.multi_period_optimization.multi_period_optimization" title="Link to this definition">¶</a></dt>
+<dd><p>Multi-period portfolio optimization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>H</strong> – Number of periods</p></li>
+<li><p><strong>r_t</strong> – Returns matrix</p></li>
+<li><p><strong>portfolio</strong> – Portfolio object</p></li>
+<li><p><strong>gamma_t</strong> – Risk aversion parameters</p></li>
+<li><p><strong>psi_t</strong> – Risk factors</p></li>
+<li><p><strong>phi_trade</strong> – Trading costs</p></li>
+<li><p><strong>phi_hold</strong> – Holding costs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optimal trade vectors</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValidationError</strong> – If input parameters are invalid</p></li>
+<li><p><strong>OptimizationError</strong> – If optimization fails</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 
         </article>
@@ -291,8 +322,27 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Multi Period Optimizer</a><ul>
+<li><a class="reference internal" href="#ConvexTrader.multi_period_optimization.multi_period_optimization"><code class="docutils literal notranslate"><span class="pre">multi_period_optimization()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

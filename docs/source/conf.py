@@ -1,8 +1,3 @@
-import os
-import sys
-
-sys.path.insert(0, os.path.abspath("../../"))
-
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -11,22 +6,30 @@ sys.path.insert(0, os.path.abspath("../../"))
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = "ConvexTrader"
-copyright = "2024, Dhyey Mavani, Liam Davis, Ryan Ji, Allison Klinger, Andrew Palena"
-author = "Dhyey Mavani, Liam Davis, Ryan Ji, Allison Klinger, Andrew Palena"
-release = "0.0.0"
+project = "Sudoku SMT Solvers"
+copyright = "2025, Liam Davis, Ryan Ji"
+author = "Liam Davis, Ryan Ji"
+release = "0.0.2"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ["sphinx.ext.autodoc", "sphinx.ext.napoleon", "sphinx.ext.viewcode"]
-
+extensions = [
+    "sphinx.ext.autodoc",
+]
 
 templates_path = ["_templates"]
-html_static_path = []
 exclude_patterns = []
 
+language = "python"
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-html_theme = "furo"
+
+html_theme = "sphinx_rtd_theme"
+html_static_path = ["_static"]
+
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath("../../"))

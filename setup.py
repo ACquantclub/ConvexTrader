@@ -1,33 +1,56 @@
-from setuptools import setup, find_packages
+import os
+import setuptools
+import re
+
+NAME = "ConvexTrader"
+AUTHOR = "Liam Davis, Tairan 'Ryan' Ji, Allison Klinger, Surya Rao"
+AUTHOR_EMAIL = "ljdavis27@amherst.edu, tji26@amherst.edu, aklinger27@amherst.edu, srao28@amherst.edu"
+DESCRIPTION = "A collection of SAT and SMT solvers for solving Sudoku puzzles"
+LICENSE = "MIT"
+URL = "https://acquantclub.com/ConvexTrader"
+README = "README.md"
+CLASSIFIERS = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+INSTALL_REQUIRES = [
+    "cvxpy",
+    "numpy",
+]
+ENTRY_POINTS = {}
+SCRIPTS = []
+
+HERE = os.path.dirname(__file__)
 
 
-def parse_requirements(filename):
-    with open(filename, "r") as file:
-        lines = file.readlines()
-
-        requirements = [
-            line.strip()
-            for line in lines
-            if line.strip() and not line.startswith(("#", "-e"))
-        ]
-    return requirements
+def read(file):
+    with open(os.path.join(HERE, file), "r") as fh:
+        return fh.read()
 
 
-setup(
-    name="ConvexTrader",
-    version="0.0.2",
-    author="Liam Davis",
-    author_email="ljdavis27@amherst.edu",
-    description="A package for portfolio optimization using convex optimization",
-    long_description=open("README.md").read(),
-    long_description_content_type="text/markdown",
-    url="https://github.com/ACquantclub/Applications-of-Convex-Optimization/",
-    packages=find_packages(),
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-    ],
-    python_requires=">=3.7",
-    install_requires=parse_requirements("./requirements.txt"),
-)
+VERSION = re.search(
+    r'__version__ = [\'"]([^\'"]*)[\'"]', read(NAME.replace("-", "_") + "/__init__.py")
+).group(1)
+LONG_DESCRIPTION = read(README)
+
+
+if __name__ == "__main__":
+    setuptools.setup(
+        name=NAME,
+        version=VERSION,
+        packages=setuptools.find_packages(),
+        author=AUTHOR,
+        author_email=AUTHOR_EMAIL,
+        description=DESCRIPTION,
+        long_description=LONG_DESCRIPTION,
+        long_description_content_type="text/markdown",
+        license=LICENSE,
+        url=URL,
+        classifiers=CLASSIFIERS,
+        install_requires=INSTALL_REQUIRES,
+        entry_points=ENTRY_POINTS,
+        scripts=SCRIPTS,
+        include_package_data=True,
+        python_requires=">=3.9",
+    )

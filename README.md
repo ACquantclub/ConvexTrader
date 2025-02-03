@@ -1,8 +1,66 @@
 # Applications-of-Convex-Optimization
 
-Fall 2024 Project: Applications of Convex Optimization
+## About
 
-## Installation
+This repository contains a Python package, ConvexTrader, for applications of convex application methods to quantitative trading. Created by members of the Amherst College Quant Club as part of the 2024-2025 school year, this package is based upon a paper by Dhyey Mavani '25, which can be found [here](https://github.com/ACquantclub/ConvexTrader/blob/main/refs/Optimization_Final_Report_Dhyey_Mavani.pdf).
+
+## Installation & Use
+
+### Installation
+To run the code locally, you can install with `pip`
+
+```bash
+pip install convextrader
+```
+
+### Using Optimization Techniques
+
+```python
+from ConvexTrader import Portfolio
+from ConvexTrader import Trade, TradeType
+from ConvexTrader.single_period_optimization import single_period_optimization
+from ConvexTrader.portfolio_exceptions import ValidationError, OptimizationError
+
+# Example Portfolio
+portfolio = Portfolio()
+trades = [
+    Trade("AAPL", 100, 150.0, datetime(2023, 1, 1), TradeType.BUY),
+    Trade("GOOGL", 50, 2000.0, datetime(2023, 1, 2), TradeType.BUY),
+    Trade("MSFT", 75, 300.0, datetime(2023, 1, 3), TradeType.BUY),
+]
+for trade in trades:
+    portfolio.execute_trade(trade)
+
+# Example Trade (single period)
+
+r_t = np.array([0.05, 0.07, 0.02])
+w_t = sample_portfolio.weights_vector
+gamma = 1.0
+
+def phi_trade(z):
+    return cp.sum(cp.abs(z))
+
+def phi_hold(w):
+    return cp.sum(cp.square(w))
+
+# this returns the optimal trade vector to be used
+result = single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold)
+
+
+```
+
+### Running Tests
+
+1. **Navigate to the tests directory**:
+    ```bash
+    cd tests
+    ```
+
+2. Follow the instructions in the README located in the [tests directory](https://github.com/ACquantclub/ConvexTrader/blob/main/tests/README.md) to run the tests.
+
+## Contributing
+
+We welcome contributions in the form of new solvers, additions to our benchmark suite, or anything that improves the tool! Here's how to get started:
 
 ### Setting Up a Virtual Environment
 
@@ -27,18 +85,53 @@ Fall 2024 Project: Applications of Convex Optimization
         .\env\Scripts\activate
         ```
 
-### Installing Dependencies
+### Installing Dependencies and Hooks
 
-1. **Install the required packages**:
+1. **Install the required dependencies from the `requirements.txt` file**:
     ```bash
     pip install -r requirements.txt
     ```
 
-### Running Tests
+2. **Set Up Pre-Commit Hooks**:  
+   Install and configure pre-commit hooks to maintain code quality:
+   ```bash
+   pip install pre-commit
+   pre-commit install
+   ```
 
-1. **Navigate to the tests directory**:
-    ```bash
-    cd tests
-    ```
+   To manually run the hooks and verify code compliance, use:
+   ```bash
+   pre-commit run
+   ```
 
-2. Follow the instructions in the README located in the tests directory to run the tests.
+### Adding Tests and Changes
+
+1. **Testing and Coverage Requirements**:  
+   - Write tests for any new code or modifications.
+   - Use `pytest` for running tests:
+     ```bash
+     pytest
+     ```
+   - Ensure the test coverage is at least 90%
+  
+2. **Add and Commit Your Changes**:  
+   - Follow the existing code style and structure.
+   - Verify that all pre-commit hooks pass and the test coverage meets the minimum requirement.
+   ```bash
+   git add .
+   git commit -m "Description of your changes"
+   ```
+
+3. **Push Your Branch**:
+   Push your changes to your forked repository:
+   ```bash
+   git push origin your-branch-name
+   ```
+
+4. **Open a PR for us to review**
+
+Thank you for your interest in contributing to ConvexTrader! Your efforts help make this project better for everyone.
+
+## Contact
+
+For any questions about the package, please reach out to trading at amherst.edu

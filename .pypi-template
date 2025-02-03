@@ -14,7 +14,7 @@ package_title: ConvexTrader
 readme: README.md
 requires: ["cvxpy", "numpy"]
 scripts: []
-version: 0.0.2
+version: 0.0.3
 your_author_name: Liam Davis
 your_email_address: davisliam123@gmail.com
 your_full_name: Liam Davis

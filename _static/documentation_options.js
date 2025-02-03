@@ -1,6 +1,6 @@
 const DOCUMENTATION_OPTIONS = {
-    VERSION: '0.0.0',
-    LANGUAGE: 'en',
+    VERSION: '0.0.2',
+    LANGUAGE: 'python',
     COLLAPSE_INDEX: false,
     BUILDER: 'html',
     FILE_SUFFIX: '.html',

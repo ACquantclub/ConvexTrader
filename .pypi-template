@@ -1,0 +1,21 @@
+a_description_for_the_package: This package is for convex optimization in portfolio management.
+classifiers:
+- 'Programming Language :: Python'
+console_scripts: []
+first_year_of_publication: '2025'
+github_account: ACquantclub
+github_repo_name: ConvexTrader
+keywords_describing_the_package: SMT, SAT, Sudoku
+license: MIT
+package_module_name: ConvexTrader
+package_name: ConvexTrader
+package_tagline: Collection of SAT and SMT solvers for Sudoku.
+package_title: ConvexTrader
+readme: README.md
+requires: ["cvxpy", "numpy"]
+scripts: []
+version: 0.0.2
+your_author_name: Liam Davis
+your_email_address: davisliam123@gmail.com
+your_full_name: Liam Davis
+your_name: Liam Davis

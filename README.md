@@ -10,7 +10,7 @@ This repository contains a Python package, ConvexTrader, for applications of con
 To run the code locally, you can install with `pip`
 
 ```bash
-pip install convextrader
+pip install ConvexTrader
 ```
 
 ### Using Optimization Techniques
@@ -46,21 +46,15 @@ def phi_hold(w):
 # this returns the optimal trade vector to be used
 result = single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold)
 
-
 ```
 
 ### Running Tests
 
-1. **Navigate to the tests directory**:
-    ```bash
-    cd tests
-    ```
-
-2. Follow the instructions in the README located in the [tests directory](https://github.com/ACquantclub/ConvexTrader/blob/main/tests/README.md) to run the tests.
+1. Follow the instructions in the README located in the [tests directory](https://github.com/ACquantclub/ConvexTrader/blob/main/tests/README.md) to run the tests with pytest.
 
 ## Contributing
 
-We welcome contributions in the form of new solvers, additions to our benchmark suite, or anything that improves the tool! Here's how to get started:
+We welcome contributions in the form of coding new applications of convex optimization towards trading, or anything to help improve the tool. Here's how you can help:
 
 ### Setting Up a Virtual Environment
 
@@ -119,13 +113,15 @@ We welcome contributions in the form of new solvers, additions to our benchmark 
    - Verify that all pre-commit hooks pass and the test coverage meets the minimum requirement.
    ```bash
    git add .
+   pre-commit install
+   pre-commit run
    git commit -m "Description of your changes"
    ```
 
 3. **Push Your Branch**:
    Push your changes to your forked repository:
    ```bash
-   git push origin your-branch-name
+   git push --setup-upstream origin
    ```
 
 4. **Open a PR for us to review**

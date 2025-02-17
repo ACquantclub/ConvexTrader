@@ -1,8 +1,13 @@
 # Applications-of-Convex-Optimization
 
+[![Pytest + CI/CD](https://github.com/ACquantclub/ConvexTrader/actions/workflows/github-actions-tests.yml/badge.svg)](https://github.com/ACquantclub/ConvexTrader/actions/workflows/github-actions-tests.yml)
+[![Coverage Status](https://coveralls.io/github/ACquantclub/ConvexTrader/badge.svg)](https://coveralls.io/github/ACquantclub/ConvexTrader)
+[![Docs Build Deployment](https://github.com/liamjdavis/Sudoku-SMT-Solvers/actions/workflows/docs.yml/badge.svg)](https://github.com/ACQuantClub/ConvexTrader/actions/workflows/docs.yml)
+[![Documentation](https://img.shields.io/badge/docs-latest-blue.svg)](https://acquantclub.com/ConvexTrader)
+
 ## About
 
-This repository contains a Python package, ConvexTrader, for applications of convex application methods to quantitative trading. Created by members of the Amherst College Quant Club as part of the 2024-2025 school year, this package is based upon a paper by Dhyey Mavani '25, which can be found [here](https://github.com/ACquantclub/ConvexTrader/blob/main/refs/Optimization_Final_Report_Dhyey_Mavani.pdf).
+This repository contains a Python package, ConvexTrader, for applications of convex application methods to portfolio optimization. Created by members of the Amherst College Quant Club as part of the 2024-2025 school year, this package is based upon a paper by Dhyey Mavani '25, which can be found [here](https://github.com/ACquantclub/ConvexTrader/blob/main/refs/Optimization_Final_Report_Dhyey_Mavani.pdf).
 
 ## Installation & Use
 
@@ -50,7 +55,10 @@ result = single_period_optimization(r_t, w_t, gamma, phi_trade, phi_hold)
 
 ### Running Tests
 
-1. Follow the instructions in the README located in the [tests directory](https://github.com/ACquantclub/ConvexTrader/blob/main/tests/README.md) to run the tests with pytest.
+To run the test suite, use
+```bash
+pytest
+```
 
 ## Contributing
 
@@ -113,7 +121,6 @@ We welcome contributions in the form of coding new applications of convex optimi
    - Verify that all pre-commit hooks pass and the test coverage meets the minimum requirement.
    ```bash
    git add .
-   pre-commit install
    pre-commit run
    git commit -m "Description of your changes"
    ```

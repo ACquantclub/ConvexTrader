@@ -5,3 +5,4 @@ datetime
 pytest
 pytest-cov
 coveralls
+pre-commit
